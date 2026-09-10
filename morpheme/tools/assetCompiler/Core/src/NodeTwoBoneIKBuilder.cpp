@@ -54,11 +54,11 @@ void NodeTwoBoneIKBuilder::getNodeDefInputConnections(
   readNodeID(nodeDefDataBlock, "InputNodeID", inputNodeID);
   childNodeIDs.push_back(inputNodeID);
 
-  readDataPinChildNodeID(nodeDefDataBlock,"EffectorTarget", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock,"TargetOrientation", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock,"SwivelAngle", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock,"IkFkBlendWeight", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock,"SwivelContributionToOrientation", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock,"effectorTargetPosNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock,"targetOrientationNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock,"swivelAngleNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock,"ikFkBlendWeightNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock,"swivelContributionToOrientationNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -69,11 +69,11 @@ void NodeTwoBoneIKBuilder::preInit(
   AssetProcessor*             NMP_UNUSED(processor))
 {
   // Control parameters
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "EffectorTarget",  0,  true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "TargetOrientation",  1,  true, MR::ATTRIB_SEMANTIC_CP_VECTOR4);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "SwivelAngle",  2,  true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkFkBlendWeight",  3,  true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "SwivelContributionToOrientation",  4,  true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "effectorTargetPosNodeID",  0,  true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "targetOrientationNodeID",  1,  true, MR::ATTRIB_SEMANTIC_CP_VECTOR4);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "swivelAngleNodeID",  2,  true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "ikFkBlendWeightNodeID",  3,  true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "swivelContributionToOrientationNodeID",  4,  true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 
 }
 

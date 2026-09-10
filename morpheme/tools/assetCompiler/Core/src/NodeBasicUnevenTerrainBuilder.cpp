@@ -57,8 +57,8 @@ void NodeBasicUnevenTerrainBuilder::getNodeDefInputConnections(
 
   //---------------------------
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "IkHipsWeight", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "IkFkBlendWeight", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "IkHipsWeightNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "IkFkBlendWeightNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -68,8 +68,8 @@ void NodeBasicUnevenTerrainBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkHipsWeight", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkFkBlendWeight", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkHipsWeightNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkFkBlendWeightNodeID", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

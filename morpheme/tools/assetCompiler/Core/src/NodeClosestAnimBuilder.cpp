@@ -127,7 +127,7 @@ void NodeClosestAnimBuilder::getNodeDefInputConnections(
   }
 
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "DeadBlendWeight", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "DeadBlendWeightNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -155,7 +155,7 @@ void NodeClosestAnimBuilder::preInit(
   const ME::NetworkDefExport* netDefExport,
   AssetProcessor*             processor)
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "DeadBlendWeight", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "DeadBlendWeightNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 
 
 

@@ -64,7 +64,7 @@ void NodeSwitchBuilder::getNodeDefInputConnections(
   }
 
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "Weight", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "WeightNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -74,7 +74,7 @@ void NodeSwitchBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-    declareDataPin(netDefCompilationInfo, nodeDefExport, "Weight", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+    declareDataPin(netDefCompilationInfo, nodeDefExport, "WeightNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -198,8 +198,11 @@ MR::NodeDef* NodeSwitchBuilder::init(
     childNodeWeights,                                                   // attribData
     MR::AttribDataFloatArray::getMemoryRequirements(sourceNodeCount));  // attribMemReqs
 
-  MR::AttribDataSwitchDef::EvaluateMode evalMode;
-  nodeDefDataBlock->readUInt((uint32_t&)evalMode, "EvaluationMethod");
+  MR::AttribDataSwitchDef::EvaluateMode evalMode = MR::AttribDataSwitchDef::kEvalEveryFrame;
+  bool everyframe;
+  nodeDefDataBlock->readBool(everyframe, "EvaluateAtEndOfAnimation");
+  if (!everyframe)
+      evalMode = MR::AttribDataSwitchDef::kEvalOnLoop;
 
   MR::AttribDataSwitchDef::InputSelectionMethod inputSelectionMethod;
   nodeDefDataBlock->readUInt((uint32_t&)inputSelectionMethod, "InputSelectionMethod");

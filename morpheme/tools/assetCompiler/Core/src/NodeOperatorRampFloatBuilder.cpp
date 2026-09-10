@@ -47,7 +47,7 @@ void NodeOperatorRampFloatBuilder::getNodeDefInputConnections(
 {
   const ME::DataBlockExport* nodeDefDataBlock = nodeDefExport->getDataBlock();
   // Control parameter
-  readDataPinChildNodeID(nodeDefDataBlock, "RateMultiplier", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "NodeConnected", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ void NodeOperatorRampFloatBuilder::preInit(
 {
   //---------------------------
   // Input control parameter.
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "RateMultiplier",0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT); // Optional control input
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "NodeConnected",0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT); // Optional control input
 }
 
 //----------------------------------------------------------------------------------------------------------------------

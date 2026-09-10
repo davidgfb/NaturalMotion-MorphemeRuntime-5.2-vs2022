@@ -38,7 +38,7 @@ void NodePlaySpeedModifierBuilder::getNodeDefInputConnections(
 
   //---------------------------
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "Weight", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "IDConnectedToWeight", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ void NodePlaySpeedModifierBuilder::preInit(
 {
   //---------------------------
   // Input control parameter.
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Weight", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "IDConnectedToWeight", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

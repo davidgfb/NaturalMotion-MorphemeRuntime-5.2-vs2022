@@ -56,8 +56,8 @@ void NodeLockFootBuilder::getNodeDefInputConnections(
   childNodeIDs.push_back(inputNodeID);
 
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "IkFkBlendWeight", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "SwivelContributionToOrientation", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "IkFkBlendWeightNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "SwivelContributionToOrientationNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -67,8 +67,8 @@ void NodeLockFootBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkFkBlendWeight", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "SwivelContributionToOrientation", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkFkBlendWeightNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "SwivelContributionToOrientationNodeID", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

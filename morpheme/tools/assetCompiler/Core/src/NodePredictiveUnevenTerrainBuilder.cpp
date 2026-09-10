@@ -60,9 +60,9 @@ void NodePredictiveUnevenTerrainBuilder::getNodeDefInputConnections(
 
   //---------------------------
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "IkHipsWeight", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "IkFkBlendWeight", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "PredictionEnable", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "IkHipsWeightNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "IkFkBlendWeightNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "PredictionEnableNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -74,9 +74,9 @@ void NodePredictiveUnevenTerrainBuilder::preInit(
 {
   //---------------------------
   // Input Control Param Connections.
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkHipsWeight", 0, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT); 
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkFkBlendWeight",  1, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT); 
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "PredictionEnable",  2, true,  MR::ATTRIB_SEMANTIC_CP_BOOL); 
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkHipsWeightNodeID", 0, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT); 
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "IkFkBlendWeightNodeID",  1, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT); 
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "PredictionEnableNodeID",  2, true,  MR::ATTRIB_SEMANTIC_CP_BOOL); 
 }
 
 //----------------------------------------------------------------------------------------------------------------------

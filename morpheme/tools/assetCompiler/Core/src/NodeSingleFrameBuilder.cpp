@@ -38,7 +38,7 @@ void NodeSingleFrameBuilder::getNodeDefInputConnections(
   childNodeIDs.push_back(source0NodeID);
 
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "Control", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "ControlNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -48,7 +48,7 @@ void NodeSingleFrameBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Control", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "ControlNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

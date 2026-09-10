@@ -32,7 +32,7 @@ void NodeOperatorVector3ToFloatsBuilder::getNodeDefInputConnections(
   const ME::DataBlockExport* nodeDefDataBlock = nodeDefExport->getDataBlock();
 
   // Control parameter
-  readDataPinChildNodeID(nodeDefDataBlock, "Input", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "NodeConnectedTo0", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -44,7 +44,7 @@ void NodeOperatorVector3ToFloatsBuilder::preInit(
 {
   //---------------------------
   // Input Control Param Connections.
-  declareDataPin(netDefCompilationInfo, nodeDefExport,"Input", 0, true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
+  declareDataPin(netDefCompilationInfo, nodeDefExport,"NodeConnectedTo0", 0, true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

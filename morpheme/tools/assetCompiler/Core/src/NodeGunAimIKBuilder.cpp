@@ -58,8 +58,8 @@ void NodeGunAimIKBuilder::getNodeDefInputConnections(
   childNodeIDs.push_back(inputNodeID);
 
   // Control parameter node IDs.
-  readDataPinChildNodeID(nodeDefDataBlock, "Target", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "BlendWeight", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "TargetPosNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "BlendWeightNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -69,8 +69,8 @@ void NodeGunAimIKBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Target", 0, true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "BlendWeight", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "TargetPosNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "BlendWeightNodeID", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

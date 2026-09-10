@@ -67,8 +67,8 @@ void NodeBlend2x2Builder::getNodeDefInputConnections(
   }
 
   // Set up connected blend weight control param node data.
-  readDataPinChildNodeID(nodeDefDataBlock, "WeightX", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "WeightY", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "WeightXNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "WeightYNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -78,8 +78,8 @@ void NodeBlend2x2Builder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "WeightX", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "WeightY", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "WeightXNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "WeightYNodeID", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

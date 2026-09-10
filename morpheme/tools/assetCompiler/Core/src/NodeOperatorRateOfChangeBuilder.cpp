@@ -48,7 +48,7 @@ void NodeOperatorRateOfChangeBuilder::getNodeDefInputConnections(
   const ME::DataBlockExport* nodeDefDataBlock = nodeDefExport->getDataBlock();
 
   // Control parameter
-  readDataPinChildNodeID(nodeDefDataBlock, "Input", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "inConnectedNode", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -58,7 +58,7 @@ void NodeOperatorRateOfChangeBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Input", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "inConnectedNode", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

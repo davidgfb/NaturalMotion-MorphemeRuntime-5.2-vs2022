@@ -57,11 +57,11 @@ void AP::NodeHipsIKBuilder::getNodeDefInputConnections(
   childNodeIDs.push_back(sourceNodeID);
 
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "PositionDelta", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "PositionDeltaNodeID", childNodeIDs, true);
   readDataPinChildNodeID(nodeDefDataBlock, "RotationDeltaQuatNodeID", childNodeIDs, true);
   readDataPinChildNodeID(nodeDefDataBlock, "RotationDeltaEulerNodeID", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "FootTurnWeight", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "Weight", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "FootTurnWeightNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "WeightNodeID", childNodeIDs, true);
 
 }
 
@@ -124,11 +124,11 @@ void AP::NodeHipsIKBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "PositionDelta", 0, true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "PositionDeltaNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
   declareDataPin(netDefCompilationInfo, nodeDefExport, "RotationDeltaQuatNodeID", 1, true, MR::ATTRIB_SEMANTIC_CP_VECTOR4);
   declareDataPin(netDefCompilationInfo, nodeDefExport, "RotationDeltaEulerNodeID", 2, true, MR::ATTRIB_SEMANTIC_CP_VECTOR3);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "FootTurnWeight", 3, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Weight", 4, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "FootTurnWeightNodeID", 3, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "WeightNodeID", 4, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

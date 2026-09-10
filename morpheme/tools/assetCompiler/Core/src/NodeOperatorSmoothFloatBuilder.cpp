@@ -46,7 +46,7 @@ void NodeOperatorSmoothFloatBuilder::getNodeDefInputConnections(
   AssetProcessor*             NMP_UNUSED(processor))
 {
   const ME::DataBlockExport* nodeDefDataBlock = nodeDefExport->getDataBlock();
-  readDataPinChildNodeID(nodeDefDataBlock, "Input", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "inConnectedNode", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -56,7 +56,7 @@ void NodeOperatorSmoothFloatBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport,  "Input",   0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport,  "inConnectedNode",   0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -117,9 +117,8 @@ MR::NodeDef* NodeOperatorSmoothFloatBuilder::init(
   //---------------------------
   // Smooth time
   float smoothTimeInc = 0.0f;
-  nodeDefDataBlock->readFloat(smoothTimeInc, "SmoothTime_Increasing");
-  float smoothTimeDec = 0.0f;
-  nodeDefDataBlock->readFloat(smoothTimeDec, "SmoothTime_Decreasing");
+  nodeDefDataBlock->readFloat(smoothTimeInc, "SmoothTime");
+  float smoothTimeDec = smoothTimeInc;
 
   //---------------------------
   // Smooth velocity

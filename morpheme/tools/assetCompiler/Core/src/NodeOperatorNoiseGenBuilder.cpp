@@ -48,7 +48,7 @@ void NodeOperatorNoiseGenBuilder::getNodeDefInputConnections(
   const ME::DataBlockExport* nodeDefDataBlock = nodeDefExport->getDataBlock();
 
   // Control parameter
-  readDataPinChildNodeID(nodeDefDataBlock, "Input", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "NodeConnected", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -60,7 +60,7 @@ void NodeOperatorNoiseGenBuilder::preInit(
 {
   //---------------------------
   // Input control parameter.
-  declareDataPin(netDefCompilationInfo, nodeDefExport,  "Input", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport,  "NodeConnected", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

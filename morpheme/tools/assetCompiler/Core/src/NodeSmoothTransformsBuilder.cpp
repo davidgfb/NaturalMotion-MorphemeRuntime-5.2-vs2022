@@ -54,7 +54,7 @@ void NodeSmoothTransformsBuilder::getNodeDefInputConnections(
   childNodeIDs.push_back(source0NodeID);
 
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "Multiplier", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "MultiplierNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -64,7 +64,7 @@ void NodeSmoothTransformsBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Multiplier", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT); 
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "MultiplierNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT); 
 }
 
 //----------------------------------------------------------------------------------------------------------------------

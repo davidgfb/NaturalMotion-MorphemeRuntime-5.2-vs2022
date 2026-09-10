@@ -40,7 +40,7 @@ void NodeScaleToDurationBuilder::getNodeDefInputConnections(
 
   //---------------------------
   // Set up connected blend weight control param node data.
-  readDataPinChildNodeID(nodeDefDataBlock, "Duration", childNodeIDs, false);
+  readDataPinChildNodeID(nodeDefDataBlock, "IDConnectedToDuration", childNodeIDs, false);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -50,7 +50,7 @@ void NodeScaleToDurationBuilder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Duration", 0, false, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "IDConnectedToDuration", 0, false, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

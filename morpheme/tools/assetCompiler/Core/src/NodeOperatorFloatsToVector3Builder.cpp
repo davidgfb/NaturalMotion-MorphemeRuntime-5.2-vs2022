@@ -32,9 +32,9 @@ void NodeOperatorFloatsToVector3Builder::getNodeDefInputConnections(
   const ME::DataBlockExport* nodeDefDataBlock = nodeDefExport->getDataBlock();
 
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "FloatX", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "FloatY", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "FloatZ", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "NodeConnectedTo0", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "NodeConnectedTo1", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "NodeConnectedTo2", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -46,9 +46,9 @@ void NodeOperatorFloatsToVector3Builder::preInit(
 {
   //---------------------------
   // Input Control Param Connections.
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "FloatX", 0, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport,"FloatY", 1, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "FloatZ", 2, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "NodeConnectedTo0", 0, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport,"NodeConnectedTo1", 1, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "NodeConnectedTo2", 2, true,  MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

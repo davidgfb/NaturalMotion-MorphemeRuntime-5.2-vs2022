@@ -48,8 +48,8 @@ void NodeOperatorArithmeticBuilder::getNodeDefInputConnections(
   const ME::DataBlockExport* nodeDefDataBlock = nodeDefExport->getDataBlock();
 
   // Control parameters
-  readDataPinChildNodeID(nodeDefDataBlock, "Input0", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "Input1", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "NodeConnectedTo0", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "NodeConnectedTo1", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -60,8 +60,8 @@ void NodeOperatorArithmeticBuilder::preInit(
   AssetProcessor*             NMP_UNUSED(processor))
 {
   // Input control parameters.
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Input0", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Input1", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "NodeConnectedTo0", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "NodeConnectedTo1", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
