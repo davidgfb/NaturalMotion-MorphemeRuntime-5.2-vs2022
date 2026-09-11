@@ -1169,7 +1169,7 @@ NM_INLINE void subTaskClosestAnimTransforms(
 
   //---------------------------
   // Connected control param providing blend weight.
-  float blendWeight = NMP::clampValue(blendWeightAttrib->m_value, 0.0f, 1.0f);
+  float blendWeight = blendWeightAttrib ? NMP::clampValue(blendWeightAttrib->m_value, 0.0f, 1.0f) : 1.0;
   float dt = blendWeight * deltaTime->m_value;
 
   // Update the dead blend transforms. Note that all channels contain local space

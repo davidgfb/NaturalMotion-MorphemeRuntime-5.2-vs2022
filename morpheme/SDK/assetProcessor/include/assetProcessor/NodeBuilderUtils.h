@@ -365,7 +365,9 @@ NM_INLINE bool processCPConnectionDetails(
   int32_t connectedPinIndex = MR::INVALID_PIN_INDEX;
   MR::NodeID connectedCPNodeID = MR::INVALID_NODE_ID;
 
-  if(nodeDefDataBlock->readNetworkNodeId(serialisedCPNodeID, info->m_nodeIDLabel))
+  bool readnetwork = nodeDefDataBlock->readNetworkNodeId(serialisedCPNodeID, info->m_nodeIDLabel);
+
+  if(readnetwork && serialisedCPNodeID != -1)
   {
     connectedCPNodeID = (MR::NodeID)serialisedCPNodeID;
     nodeDefDataBlock->readIntAttribute(connectedPinIndex, info->m_nodeIDLabel, "pinIndex");
@@ -377,7 +379,7 @@ NM_INLINE bool processCPConnectionDetails(
 
     return true;
   }
-  else if (nodeDefDataBlock->readUndefined(info->m_nodeIDLabel))
+  else if (readnetwork && serialisedCPNodeID == -1)//(nodeDefDataBlock->readUndefined(info->m_nodeIDLabel))
   {
 #ifdef NMP_ENABLE_ASSERTS
     NMP_VERIFY_MSG(

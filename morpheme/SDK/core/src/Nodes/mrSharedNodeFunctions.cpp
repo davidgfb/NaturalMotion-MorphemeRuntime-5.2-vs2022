@@ -232,8 +232,8 @@ NodeID nodeShareUpdateConnections1Child2InputCPs(
   // Update the only connected control parameter.
   NMP_ASSERT(node->getNumInputCPConnections() == 2);
   AnimSetIndex animSet = net->getOutputAnimSetIndex(node->getNodeID());
-  net->updateInputCPConnection(node->getInputCPConnection(0), animSet);
-  net->updateInputCPConnection(node->getInputCPConnection(1), animSet);
+  net->updateOptionalInputCPConnection(node->getInputCPConnection(0), animSet);
+  net->updateOptionalInputCPConnection(node->getInputCPConnection(1), animSet);
 
   // Recurse to child.
   NMP_ASSERT(net->getNumActiveChildren(node->getNodeID()) == 1);

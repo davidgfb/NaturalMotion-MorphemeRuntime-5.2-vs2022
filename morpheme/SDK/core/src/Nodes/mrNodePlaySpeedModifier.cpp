@@ -39,7 +39,7 @@ Task* nodePlaySpeedModifierQueueUpdateTime(
     NMP_ASSERT(currFrameNo > 0);
     NodeID activeParentNodeID = net->getActiveParentNodeID(thisNodeID);
     net->TaskAddParamAndDependency(task, 0, ATTRIB_SEMANTIC_UPDATE_TIME_POS, ATTRIB_TYPE_UPDATE_PLAYBACK_POS, activeParentNodeID, thisNodeID, TPARAM_FLAG_INPUT, currFrameNo);
-    net->TaskAddInputCP(task, 1, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
+    net->TaskAddOptionalInputCP(task, 1, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
     net->TaskAddOutputParamZeroLifespan(task, 2, ATTRIB_SEMANTIC_UPDATE_TIME_POS, ATTRIB_TYPE_UPDATE_PLAYBACK_POS, INVALID_NODE_ID, currFrameNo);
   }
 
@@ -71,7 +71,7 @@ Task* nodePlaySpeedModifierQueueEventTrack(
 
     net->TaskAddOutputParamZeroLifespan(task, 0, ATTRIB_SEMANTIC_SYNC_EVENT_TRACK, ATTRIB_TYPE_SYNC_EVENT_TRACK, INVALID_NODE_ID, currFrameNo);
     net->TaskAddParamAndDependency(task, 1, ATTRIB_SEMANTIC_SYNC_EVENT_TRACK, ATTRIB_TYPE_SYNC_EVENT_TRACK, activeChildNodeID, INVALID_NODE_ID, TPARAM_FLAG_INPUT, currFrameNo);
-    net->TaskAddInputCP(task, 2, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
+    net->TaskAddOptionalInputCP(task, 2, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
   }
 
   return task;

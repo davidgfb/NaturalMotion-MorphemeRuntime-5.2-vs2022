@@ -37,7 +37,7 @@ NodeID nodeFeatherBlend2SyncEventsUpdateConnectionsFixBlendWeight(
   {
     // There is no connected blend weight so the events blend weight is located at index 0
     const AttribDataFloatArray* nodeChildWeights = nodeDef->getAttribData<AttribDataFloatArray>(ATTRIB_SEMANTIC_CHILD_NODE_WEIGHTS);
-    AttribDataFloat* inputCPFloat0 = net->updateInputCPConnection<AttribDataFloat>(nodeDef->getInputCPConnection(0), animSet);
+    AttribDataFloat* inputCPFloat0 = net->updateOptionalInputCPConnection<AttribDataFloat>(nodeDef->getInputCPConnection(0), animSet);
     blendWeightEvents = nodeBlend2CalculateBlendWeight(inputCPFloat0->m_value, nodeChildWeights->m_values);
   }
 

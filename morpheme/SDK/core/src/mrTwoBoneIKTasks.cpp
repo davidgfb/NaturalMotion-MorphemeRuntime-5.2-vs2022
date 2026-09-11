@@ -110,9 +110,9 @@ NM_INLINE void subTaskTwoBoneIKTransforms(
     targetPos = effectorTargetAttrib->m_value;
   }
 
-  float swivelAngle = swivelAngleAttrib->m_value;
-  float ikFkBlendWeight = ikFkBlendWeightAttrib->m_value;
-  float swivelContributionToOrientation = swivelContributionToOrientationAttrib->m_value;
+  float swivelAngle = swivelAngleAttrib ? swivelAngleAttrib->m_value : 0.0;
+  float ikFkBlendWeight = ikFkBlendWeightAttrib ? ikFkBlendWeightAttrib->m_value : 1.0;
+  float swivelContributionToOrientation = swivelContributionToOrientationAttrib ? swivelContributionToOrientationAttrib->m_value : 0.0;
   
   // For world-space targets, retrieve the current trajectory and move the target into character space.
   // We have to use the previous frame's trajectory because the current frame's value may contain some but

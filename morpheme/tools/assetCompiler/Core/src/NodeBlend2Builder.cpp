@@ -64,8 +64,8 @@ void NodeBlend2Builder::getNodeDefInputConnections(
   childNodeIDs.push_back(source1NodeID);
 
   // Weight
-  readDataPinChildNodeID(nodeDefDataBlock, "Weight", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "EventBlendingWeight", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "WeightNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "EventWeightNodeID", childNodeIDs, true);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -75,8 +75,8 @@ void NodeBlend2Builder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Weight", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "EventBlendingWeight", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "WeightNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "EventWeightNodeID", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------

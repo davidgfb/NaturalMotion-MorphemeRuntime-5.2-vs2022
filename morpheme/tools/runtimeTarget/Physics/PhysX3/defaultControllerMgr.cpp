@@ -442,6 +442,11 @@ void DefaultControllerMgr::createControllerRecord(
 
   NMP::Vector3 controllerPos = ccRecord->m_characterPosition + computeWorldSpaceCCOriginOffset(ccRecord);
   desc.position = MR::nmVector3ToPxExtendedVec3(controllerPos);
+  
+  //horse_scaling.mcn crashes bcause of this
+  if(desc.stepOffset > desc.radius+desc.height*2.0f)
+    desc.stepOffset = desc.height * 2.0f;
+
   ccRecord->m_pxController = m_manager->createController(desc);
 
   NMP_ASSERT(ccRecord->m_pxController);

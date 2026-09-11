@@ -199,9 +199,9 @@ MR::NodeDef* NodeSwitchBuilder::init(
     MR::AttribDataFloatArray::getMemoryRequirements(sourceNodeCount));  // attribMemReqs
 
   MR::AttribDataSwitchDef::EvaluateMode evalMode = MR::AttribDataSwitchDef::kEvalEveryFrame;
-  bool everyframe;
-  nodeDefDataBlock->readBool(everyframe, "EvaluateAtEndOfAnimation");
-  if (!everyframe)
+  bool noteveryframe;
+  nodeDefDataBlock->readBool(noteveryframe, "EvaluateAtEndOfAnimation");
+  if (noteveryframe)
       evalMode = MR::AttribDataSwitchDef::kEvalOnLoop;
 
   MR::AttribDataSwitchDef::InputSelectionMethod inputSelectionMethod;

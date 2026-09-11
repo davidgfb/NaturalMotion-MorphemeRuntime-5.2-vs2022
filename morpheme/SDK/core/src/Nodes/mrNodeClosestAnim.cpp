@@ -1636,7 +1636,7 @@ NodeID nodeClosestAnimUpdateConnections(
   AnimSetIndex activeAnimSetIndex = net->getOutputAnimSetIndex(node->getNodeID());
   
   // Update blend weight control parameter.
-  net->updateInputCPConnection<AttribDataFloat>(node->getInputCPConnection(0), activeAnimSetIndex);
+  net->updateOptionalInputCPConnection<AttribDataFloat>(node->getInputCPConnection(0), activeAnimSetIndex);
 
   // Check if we have already set the active child node
   NodeConnections* connections = net->getActiveNodesConnections(node->getNodeID());
@@ -1821,7 +1821,7 @@ Task* nodeClosestAnimQueueTransforms(NodeDef* node, TaskQueue* queue, Network* n
     // Current playback position in the active child
     net->TaskAddParamAndDependency(task, 4, ATTRIB_SEMANTIC_TIME_POS, ATTRIB_TYPE_PLAYBACK_POS, activeChildNodeID, INVALID_NODE_ID, TPARAM_FLAG_INPUT, currFrameNo);
     // Dead blend control weight
-    net->TaskAddInputCP(task, 5, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
+    net->TaskAddOptionalInputCP(task, 5, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
     // Trajectory delta transform
     net->TaskAddParamAndDependency(task, 6, ATTRIB_SEMANTIC_TRAJECTORY_DELTA_TRANSFORM, ATTRIB_TYPE_TRAJECTORY_DELTA_TRANSFORM, node->getNodeID(), INVALID_NODE_ID, TPARAM_FLAG_INPUT, currFrameNo);
     // Input/Output closest anim state
@@ -1935,7 +1935,7 @@ Task* nodeClosestAnimQueueTrajectoryDeltaAndTransforms(
     // Current playback position in the active child
     net->TaskAddParamAndDependency(task, 4, ATTRIB_SEMANTIC_TIME_POS, ATTRIB_TYPE_PLAYBACK_POS, activeChildNodeID, INVALID_NODE_ID, TPARAM_FLAG_INPUT, currFrameNo);
     // Dead blend control weight
-    net->TaskAddInputCP(task, 5, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
+    net->TaskAddOptionalInputCP(task, 5, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
     // Input/Output closest anim state
     net->TaskAddNetInputOutputParam(task, 6, ATTRIB_SEMANTIC_NODE_SPECIFIC_STATE, ATTRIB_TYPE_CLOSEST_ANIM_STATE, INVALID_NODE_ID, currFrameNo);
     // Dead blend delta time update (network dt)

@@ -56,10 +56,10 @@ void subTaskLockFootTransforms(
   NMP_USED_FOR_ASSERTS(const uint32_t numRigJoints = rig->getNumBones());
 
   // Get the blend weight control parameter
-  float ikFkBlendWeight = NMP::clampValue(ikFkBlendWeightAttrib->m_value, 0.0f, 1.0f);
+  float ikFkBlendWeight = ikFkBlendWeightAttrib ? NMP::clampValue(ikFkBlendWeightAttrib->m_value, 0.0f, 1.0f) : 1.0;
 
   // Get the swivel orientation control parameter, or a default if none is connected
-  float swivelContributionToOrientation = swivelContributionToOrientationAttrib->m_value;
+  float swivelContributionToOrientation = swivelContributionToOrientationAttrib ? swivelContributionToOrientationAttrib->m_value : 0.0;
 
   // Get some other parameters or aliases of them
   const int32_t* joints = lockFootChainAttrib->m_jointIndex;

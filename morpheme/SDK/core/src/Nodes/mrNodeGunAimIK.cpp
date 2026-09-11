@@ -112,8 +112,8 @@ Task* nodeGunAimIKQueueGunAimIKTransformBuffs(
       TPARAM_FLAG_INPUT, currFrameNo);
 
     // Two connected control parameters providing the TargetPos and the BlendWeight.
-    net->TaskAddInputCP(task, 2, ATTRIB_SEMANTIC_CP_VECTOR3, node->getInputCPConnection(0));
-    net->TaskAddInputCP(task, 3, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(1));
+    net->TaskAddOptionalInputCP(task, 2, ATTRIB_SEMANTIC_CP_VECTOR3, node->getInputCPConnection(0));
+    net->TaskAddOptionalInputCP(task, 3, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(1));
 
     net->TaskAddDefInputParam(task, 4, ATTRIB_SEMANTIC_NODE_SPECIFIC_DEF, node->getNodeID());
     net->TaskAddDefInputParam(
@@ -169,8 +169,8 @@ Task* nodeGunAimIKQueueGunAimIKTrajectoryDeltaAndTransformBuffs(
       TPARAM_FLAG_INPUT, currFrameNo);
 
     // Two connected control parameters providing the TargetPos and the BlendWeight.
-    net->TaskAddInputCP(task, 1, ATTRIB_SEMANTIC_CP_VECTOR3, node->getInputCPConnection(0));
-    net->TaskAddInputCP(task, 2, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(1));
+    net->TaskAddOptionalInputCP(task, 1, ATTRIB_SEMANTIC_CP_VECTOR3, node->getInputCPConnection(0));
+    net->TaskAddOptionalInputCP(task, 2, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(1));
 
     net->TaskAddDefInputParam(task, 3, ATTRIB_SEMANTIC_NODE_SPECIFIC_DEF, node->getNodeID());
     net->TaskAddDefInputParam(

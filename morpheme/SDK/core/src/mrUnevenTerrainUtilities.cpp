@@ -541,7 +541,7 @@ void unevenTerrainMotionSolve(
   NMP_ASSERT(chainAttrib);
   NMP_ASSERT(inputIKSetupAttrib);
   NMP_ASSERT(inputFootLiftingTargetAttrib);
-  NMP_ASSERT(ikHipsWeightAttrib);
+  //NMP_ASSERT(ikHipsWeightAttrib);
   NMP_ASSERT(ikStateAttrib);
 
   NM_UT_BEGIN_PROFILING("BASIC_UT_MOTION_SOLVE");
@@ -1145,7 +1145,7 @@ void unevenTerrainMotionSolve(
     hipsIKSolver->solve();
 
     // Apply the IK Hips blend weight
-    float weight = NMP::clampValue(ikHipsWeightAttrib->m_value, 0.0f, 1.0f);
+    float weight = ikHipsWeightAttrib ? NMP::clampValue(ikHipsWeightAttrib->m_value, 0.0f, 1.0f) : 1.0f;
     if (weight < (1.0f - 1e-4f))
     {
       hipsIKSolver->blendWithBuffer(inputTransformsAttrib->m_transformBuffer, weight);

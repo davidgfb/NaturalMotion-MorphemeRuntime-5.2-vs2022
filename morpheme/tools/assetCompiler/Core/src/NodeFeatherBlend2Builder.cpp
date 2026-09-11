@@ -67,8 +67,8 @@ void NodeFeatherBlend2Builder::getNodeDefInputConnections(
   childNodeIDs.push_back(source1NodeID);
 
   // The blend weight is optional so check for a valid node id.
-  readDataPinChildNodeID(nodeDefDataBlock, "Weight", childNodeIDs, true);
-  readDataPinChildNodeID(nodeDefDataBlock, "EventBlendingWeight", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "WeightNodeID", childNodeIDs, true);
+  readDataPinChildNodeID(nodeDefDataBlock, "EventWeightNodeID", childNodeIDs, true);
 
 }
 
@@ -79,8 +79,8 @@ void NodeFeatherBlend2Builder::preInit(
   const ME::NetworkDefExport* NMP_UNUSED(netDefExport),
   AssetProcessor*             NMP_UNUSED(processor))
 {
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "Weight", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
-  declareDataPin(netDefCompilationInfo, nodeDefExport, "EventBlendingWeight", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "WeightNodeID", 0, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
+  declareDataPin(netDefCompilationInfo, nodeDefExport, "EventWeightNodeID", 1, true, MR::ATTRIB_SEMANTIC_CP_FLOAT);
 }
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -277,8 +277,8 @@ MR::NodeDef* NodeFeatherBlend2Builder::init(
 
   //---------------------------
   // Are we merging or additively blending sampled events.
-  int32_t mode = kSampledEventBlendModeInvalid;
-  nodeDefDataBlock->readInt(mode, "EventsBlendMode");
+  int32_t mode = kMergeSampledEvents;
+  //nodeDefDataBlock->readInt(mode, "EventsBlendMode");
   NodeSampledEventBlendModes eventBlendMode = (NodeSampledEventBlendModes)mode;
 
   NodeBlendModes blendMode;

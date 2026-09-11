@@ -27,8 +27,8 @@ NodeID nodeLockFootUpdateConnections(
   NMP_ASSERT(node->getNumInputCPConnections() == 2);
   AnimSetIndex animSetIndex = net->getOutputAnimSetIndex(node->getNodeID());
 
-  net->updateInputCPConnection(node->getInputCPConnection(0), animSetIndex);
-  net->updateInputCPConnection(node->getInputCPConnection(1), animSetIndex);
+  net->updateOptionalInputCPConnection(node->getInputCPConnection(0), animSetIndex);
+  net->updateOptionalInputCPConnection(node->getInputCPConnection(1), animSetIndex);
 
   // Some useful info
   FrameCount currentFrameNo = net->getCurrentFrameNo();
@@ -119,10 +119,10 @@ Task* nodeLockFootQueueLockFootTransformBuffs(
       TPARAM_FLAG_INPUT, currFrameNo);
 
     // IkFkBlendWeight
-    net->TaskAddInputCP(task, 2, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
+    net->TaskAddOptionalInputCP(task, 2, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
     
     // SwivelContributionToOrientation
-    net->TaskAddInputCP(task, 3, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(1));
+    net->TaskAddOptionalInputCP(task, 3, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(1));
     
     // Lock Foot const setup
     net->TaskAddDefInputParam(task, 4, ATTRIB_SEMANTIC_NODE_SPECIFIC_DEF, nodeID);
@@ -174,10 +174,10 @@ Task* nodeLockFootQueueLockFootTrajectoryDeltaAndTransformsBuffs(NodeDef* node, 
       TPARAM_FLAG_INPUT, currFrameNo);
 
     // IkFkBlendWeight
-    net->TaskAddInputCP(task, 1, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
+    net->TaskAddOptionalInputCP(task, 1, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(0));
 
     // SwivelContributionToOrientation
-    net->TaskAddInputCP(task, 2, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(1));
+    net->TaskAddOptionalInputCP(task, 2, ATTRIB_SEMANTIC_CP_FLOAT, node->getInputCPConnection(1));
 
     // Lock Foot const setup
     net->TaskAddDefInputParam(task, 3, ATTRIB_SEMANTIC_NODE_SPECIFIC_DEF, nodeID);
