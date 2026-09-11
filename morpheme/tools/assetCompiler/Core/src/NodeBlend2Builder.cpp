@@ -164,8 +164,8 @@ MR::NodeDef* NodeBlend2Builder::init(
 
   //---------------------------
   // Are we merging or additively blending sampled events.
-  int32_t mode = kSampledEventBlendModeInvalid;
-  nodeDefDataBlock->readInt(mode, "EventsBlendMode");
+  int32_t mode = kMergeSampledEvents;
+  //nodeDefDataBlock->readInt(mode, "EventsBlendMode");
   NodeSampledEventBlendModes eventBlendMode = (NodeSampledEventBlendModes)mode;
 
   //---------------------------
