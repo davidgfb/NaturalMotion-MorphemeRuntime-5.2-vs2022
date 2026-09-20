@@ -2,7 +2,7 @@
 
 This is a commercial distribution of NaturalMotion's morpheme:runtime, version 5.2.
 
-This distribution contains a plethora of development tools for easy integration of the morpheme Engine into other environments. such tools include the euphoria Engine/toolkit, runtimes, asset compilers, morpheme bundle loader, & the required tools meant for use with morpheme:connect. (asset compiler & runtime)
+This distribution contains a plethora of development tools for easy integration of the morpheme Engine into other environments. such tools include the euphoria Engine/toolkit, runtimes, asset compilers, morpheme bundle loader, & the required tools meant for use with morpheme:connect.
 
 The repository seen here is a modified version of the original 5.2 runtime made to be compatible with morpheme:connect 3.6.2.
 
