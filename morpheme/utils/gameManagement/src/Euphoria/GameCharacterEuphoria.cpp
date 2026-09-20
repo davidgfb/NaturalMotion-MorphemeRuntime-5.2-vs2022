@@ -96,7 +96,6 @@ CharacterEuphoria* CharacterEuphoria::create(
   MR::PhysicsScenePhysX3*     physicsScene,
   physx::PxControllerManager* controllerManager,
   physx::PxMaterial*          characterControllerMaterial,
-  MR::PhysicsRigPhysX3::Type  physicsRigType,
   const NMP::Vector3&         initialPosition,
   const NMP::Quat&            initialOrientation,
   MR::AnimSetIndex            initialAnimSetIndex,
@@ -121,8 +120,7 @@ CharacterEuphoria* CharacterEuphoria::create(
                                                                 initialOrientation,
                                                                 physicsScene,
                                                                 controllerManager,
-                                                                characterControllerMaterial,
-                                                                physicsRigType);
+                                                                characterControllerMaterial);
   instance->getNetwork()->setCharacterController(physx3CharacterController);
 
   MR::PhysicsRigPhysX3Articulation* physicsRig = (MR::PhysicsRigPhysX3Articulation*) MR::getPhysicsRig(instance->getNetwork());
@@ -144,7 +142,7 @@ CharacterEuphoria* CharacterEuphoria::create(
     // Check if the network contains behaviours.
     bool isBehavioural = netDef->containsNodeWithFlagsSet(MR::NodeDef::NODE_FLAG_IS_BEHAVIOURAL);
 
-    if (isBehavioural && physicsRig->getType() == MR::PhysicsRigPhysX3::TYPE_ARTICULATED)
+    if (isBehavioural)
     {
       uint32_t ignoreGroups = (1 << MR::GROUP_CHARACTER_CONTROLLER) | (1 << MR::GROUP_NON_COLLIDABLE);
 

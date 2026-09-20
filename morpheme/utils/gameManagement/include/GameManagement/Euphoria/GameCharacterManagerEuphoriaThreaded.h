@@ -110,9 +110,6 @@ public:
   CharacterEuphoria* createCharacterMultiThreaded(
     CharacterDefEuphoria*      characterDefEuphoria,  ///< Must have been registered with this manager.
     uint32_t                   bucketIndex,           ///< Which bucket to put this character in to.
-    MR::PhysicsRigPhysX3::Type physicsRigType = MR::PhysicsRigPhysX3::TYPE_ARTICULATED, ///< The type of physics rig to create,
-                                                                                        ///<  MR::PhysicsRigPhysX3::TYPE_ARTICULATED or 
-                                                                                        ///<  MR::PhysicsRigPhysX3::TYPE_JOINTED.
     physx::PxMaterial*         characterControllerMaterial = NULL, ///< The material to use for the character controller we create
                                                                    ///<  (a default will be created if one is not provided).
     const NMP::Vector3&        initialPosition = NMP::Vector3::InitZero,

@@ -68,7 +68,6 @@ CharacterDefEuphoria* CharacterManagerEuphoria::createCharacterDef(
 //----------------------------------------------------------------------------------------------------------------------
 CharacterEuphoria* CharacterManagerEuphoria::createCharacter(
   CharacterDefEuphoria*      characterDefEuphoria,
-  MR::PhysicsRigPhysX3::Type physicsRigType,
   physx::PxMaterial*         characterControllerMaterial,
   const NMP::Vector3&        initialPosition,
   const NMP::Quat&           initialOrientation,
@@ -86,7 +85,6 @@ CharacterEuphoria* CharacterManagerEuphoria::createCharacter(
                                                   m_physicsScene,
                                                   m_physXCharacterControllerManager,
                                                   characterControllerMaterial,
-                                                  physicsRigType,
                                                   initialPosition,
                                                   initialOrientation,
                                                   initialAnimSetIndex,

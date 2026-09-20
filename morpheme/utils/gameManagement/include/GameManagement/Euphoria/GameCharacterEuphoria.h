@@ -50,11 +50,7 @@ public:
     CharacterDefEuphoria*       characterEuphoriaDef,
     MR::PhysicsScenePhysX3*     physicsScene,
     physx::PxControllerManager* controllerManager,
-    physx::PxMaterial*          characterControllerMaterial = NULL, ///< The material to use for the character controller we create
-                                                                    ///<  (a default will be created if one is not provided).
-    MR::PhysicsRigPhysX3::Type  physicsRigType = MR::PhysicsRigPhysX3::TYPE_ARTICULATED, ///< The type of physics rig to create,
-                                                                                          ///<  MR::PhysicsRigPhysX3::TYPE_ARTICULATED or 
-                                                                                          ///<  MR::PhysicsRigPhysX3::TYPE_JOINTED.
+    physx::PxMaterial*          characterControllerMaterial = NULL, ///< The material to use for the character controller we create                                                                         ///<  MR::PhysicsRigPhysX3::TYPE_JOINTED.
     const NMP::Vector3&         initialPosition = NMP::Vector3::InitZero,
     const NMP::Quat&            initialOrientation = NMP::Quat::kIdentity,
     MR::AnimSetIndex            initialAnimSetIndex = 0,

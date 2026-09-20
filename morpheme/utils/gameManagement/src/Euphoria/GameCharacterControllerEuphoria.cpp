@@ -11,7 +11,6 @@
 //----------------------------------------------------------------------------------------------------------------------
 #include "GameManagement/Euphoria/GameCharacterControllerEuphoria.h"
 #include "mrPhysicsRigPhysX3Articulation.h"
-#include "mrPhysicsRigPhysX3Jointed.h"
 //----------------------------------------------------------------------------------------------------------------------
 
 namespace Game
@@ -120,8 +119,7 @@ CharacterControllerPhysX3* CharacterControllerPhysX3::create(
   const NMP::Quat&            initialOrientation,
   MR::PhysicsScenePhysX3*     physicsScene,
   physx::PxControllerManager* controllerManager,
-  physx::PxMaterial*          characterControllerMaterial,
-  MR::PhysicsRigPhysX3::Type  physicsRigType)
+  physx::PxMaterial*          characterControllerMaterial)
 {
   CharacterControllerPhysX3* const instance = static_cast<CharacterControllerPhysX3*>(NMPMemoryAlloc(sizeof(CharacterControllerPhysX3)));
   new(instance) CharacterControllerPhysX3();
@@ -132,8 +130,7 @@ CharacterControllerPhysX3* CharacterControllerPhysX3::create(
               initialOrientation,
               physicsScene,
               controllerManager,
-              characterControllerMaterial,
-              physicsRigType);
+              characterControllerMaterial);
 
   return instance;
 }
@@ -154,8 +151,7 @@ void CharacterControllerPhysX3::init(
   const NMP::Quat&            initialOrientation,
   MR::PhysicsScenePhysX3*     physicsScene,
   physx::PxControllerManager* controllerManager,
-  physx::PxMaterial*          characterControllerMaterial,
-  MR::PhysicsRigPhysX3::Type  physicsRigType)
+  physx::PxMaterial*          characterControllerMaterial)
 {  
   NMP_ASSERT(net && controllerManager);
   m_net = net;
@@ -191,7 +187,7 @@ void CharacterControllerPhysX3::init(
     
   
   // Create the physics rig.
-  createPhysicsRig(net, physicsScene, physicsRigType, m_positionWorld);
+  createPhysicsRig(net, physicsScene, m_positionWorld);
     
   // Recalculate the offset from the origin of the character controller.
   m_originOffset = calculateOriginOffset(worldUpDirection);
@@ -247,7 +243,6 @@ void CharacterControllerPhysX3::term()
 void CharacterControllerPhysX3::createPhysicsRig(
   MR::Network*               net,
   MR::PhysicsScenePhysX3*    physicsScene,
-  MR::PhysicsRigPhysX3::Type physicsRigType,
   const NMP::Vector3&        initialPosition)
 {
   NMP_ASSERT(net);
@@ -257,32 +252,12 @@ void CharacterControllerPhysX3::createPhysicsRig(
 
   if (physicsRigDef != NULL)
   {
-    if (physicsRigType == MR::PhysicsRigPhysX3::TYPE_ARTICULATED)
     {
       // Build an articulated physics rig.
       NMP::Memory::Resource resource = NMPMemoryAllocateFromFormat(
                           MR::PhysicsRigPhysX3Articulation::getMemoryRequirements(physicsRigDef));
       NMP_ASSERT(resource.ptr);
       MR::PhysicsRigPhysX3Articulation* physicsRig = MR::PhysicsRigPhysX3Articulation::init(
-                          resource,
-                          physicsRigDef,
-                          physicsScene,
-                          physx::PX_DEFAULT_CLIENT,
-                          15, // all client behaviour bits.
-                          animRigDef,
-                          getAnimToPhysicsMap(net->getNetworkDef(), net->getActiveAnimSetIndex()),
-                          1 << MR::GROUP_CHARACTER_PART,
-                          (1 << MR::GROUP_CHARACTER_CONTROLLER) | (1 << MR::GROUP_NON_COLLIDABLE) | (1 << MR::GROUP_INTERACTION_PROXY));
-      physicsRig->setKinematicPos(initialPosition);
-      setPhysicsRig(net, physicsRig);
-    }
-    else
-    {
-      // Build a jointed physics rig.
-      NMP::Memory::Resource resource = NMPMemoryAllocateFromFormat(
-                          MR::PhysicsRigPhysX3Jointed::getMemoryRequirements(physicsRigDef)); 
-      NMP_ASSERT(resource.ptr);
-      MR::PhysicsRigPhysX3Jointed* physicsRig = MR::PhysicsRigPhysX3Jointed::init(
                           resource,
                           physicsRigDef,
                           physicsScene,

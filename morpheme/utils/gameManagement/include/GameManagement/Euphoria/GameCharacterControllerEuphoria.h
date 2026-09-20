@@ -55,15 +55,13 @@ public:
 
   /// \brief Allocate and initialise a CharacterControllerPhysX3 instance.
   static CharacterControllerPhysX3* create(
-    MR::Network*                net,
-    const NMP::Vector3&         initialPosition,    ///< Starting position.
-    const NMP::Quat&            initialOrientation, ///< Starting orientation.
-    MR::PhysicsScenePhysX3*     physicsScene,       ///< 
-    physx::PxControllerManager* controllerManager,  ///< Reference to the shared controller manager.
-    physx::PxMaterial*          characterControllerMaterial, ///< The material to use for this character controller
+      MR::Network* net,
+      const NMP::Vector3& initialPosition,    ///< Starting position.
+      const NMP::Quat& initialOrientation, ///< Starting orientation.
+      MR::PhysicsScenePhysX3* physicsScene,       ///< 
+      physx::PxControllerManager* controllerManager,  ///< Reference to the shared controller manager.
+      physx::PxMaterial* characterControllerMaterial); ///< The material to use for this character controller
                                                              ///<  (a default will be created if one is not provided).
-    MR::PhysicsRigPhysX3::Type  physicsRigType = MR::PhysicsRigPhysX3::TYPE_ARTICULATED); ///< The type of physics rig to create,
-                                                                                          ///<  MR::PhysicsRigPhysX3::TYPE_ARTICULATED or MR::PhysicsRigPhysX3::TYPE_JOINTED.
 
   /// \brief Release a CharacterControllerPhysX3 instance.
   static void destroy(CharacterControllerPhysX3* characterController);  
@@ -76,10 +74,8 @@ public:
     const NMP::Quat&            initialOrientation, ///< Starting orientation.
     MR::PhysicsScenePhysX3*     physicsScene,       ///< 
     physx::PxControllerManager* controllerManager,  ///< Reference to the shared controller manager.
-    physx::PxMaterial*          characterControllerMaterial, ///< The material to use for this character controller
+    physx::PxMaterial*          characterControllerMaterial); ///< The material to use for this character controller
                                                              ///<  (a default will be created if one is not provided).
-    MR::PhysicsRigPhysX3::Type  physicsRigType = MR::PhysicsRigPhysX3::TYPE_ARTICULATED); ///< The type of physics rig to create,
-                                                                                          ///<  MR::PhysicsRigPhysX3::TYPE_ARTICULATED or MR::PhysicsRigPhysX3::TYPE_JOINTED. 
 
   /// \brief Release any memory allocated by this class.
   void term();
@@ -185,7 +181,6 @@ protected:
   void createPhysicsRig(
     MR::Network*               net,               ///< The Network that we are creating this rig for.
     MR::PhysicsScenePhysX3*    physicsScene,      ///< The scene to create this rig in.
-    MR::PhysicsRigPhysX3::Type physicsRigType,    ///< The type of physics rig to create, articulated or jointed.
     const NMP::Vector3&        initialPosition);  ///< Starting position for the rig.
 
   /// \brief Destroys any physics rigs attached to this Network.
